@@ -23,8 +23,10 @@ jobs:
         id: docker_build_latest
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: lpeabody/phpcs-drupal:latest
+          cache-from: type=registry,ref=lpeabody/phpcs-drupal:latest
+          cache-to: type=inline # Write the cache metadata into the image configuration
       -
         name: Get the version
         id: get_version
@@ -36,9 +38,11 @@ jobs:
         id: docker_build_tag
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: ${{ github.event_name != 'pull_request' }} # Don't push for PRs
           tags: lpeabody/phpcs-drupal:${{ steps.get_version.outputs.VERSION }}
           build-args: CODER_VERSION=${{ steps.get_version.outputs.VERSION }}
+          cache-from: type=registry,ref=lpeabody/phpcs-drupal:${{ steps.get_version.outputs.VERSION }}
+          cache-to: type=inline # Write the cache metadata into the image configuration
       -
         name: Latest image digest
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
