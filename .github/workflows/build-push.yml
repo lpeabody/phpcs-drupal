@@ -38,6 +38,8 @@ jobs:
         with:
           push: true
           tags: lpeabody/phpcs-drupal:${steps.get_version.outputs.VERSION}
+          build-args:
+            CODER_VERSION: ${steps.get_version.outputs.VERSION}
       -
         name: Latest image digest
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
