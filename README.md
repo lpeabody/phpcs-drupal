@@ -7,7 +7,7 @@ This image can be used to run Drupal coding standards sniffs against a codebase.
 Assuming you have a `phpcs.xml.dist` or `phpcs.xml` file in your project root, you can run the following from your project root to execute a scan:
 
 ```
-docker run --rm -v $PWD:/app ghcr.io/lpeabody/phpcs-drupal:8.3.13
+docker run --rm -v $PWD:/app ghcr.io/lpeabody/phpcs-drupal:8.3.15
 ```
 
 ## Using `phpcs`
@@ -15,7 +15,7 @@ docker run --rm -v $PWD:/app ghcr.io/lpeabody/phpcs-drupal:8.3.13
 By default, when running the image it will just execute `phpcs`. You can optionally override this by passing your own `phpcs` command with additional arguments if needed:
 
 ```
-docker run --rm -v $PWD:/app ghcr.io/lpeabody/phpcs-drupal:8.3.13 \
+docker run --rm -v $PWD:/app ghcr.io/lpeabody/phpcs-drupal:8.3.15 \
     phpcs \
         web/modules/custom \
         web/themes/custom
@@ -27,6 +27,5 @@ This image's tags are tightly coupled with the version of drupal/coder included 
 
 | Image Version | Coder Version |
 |----------|-------|
-| ghcr.io/lpeabody/phpcs-drupal:main | 8.3.14 |
-| ghcr.io/lpeabody/phpcs-drupal:8.3.13 | 8.3.13 |
-| ghcr.io/lpeabody/phpcs-drupal:8.3.14 | 8.3.14 |
+| ghcr.io/lpeabody/phpcs-drupal:main | 8.3.15 |
+| ghcr.io/lpeabody/phpcs-drupal:8.3.15 | 8.3.15 |
